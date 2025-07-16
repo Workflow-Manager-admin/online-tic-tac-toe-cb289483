@@ -343,6 +343,8 @@ function Board({ squares, onSquareClick, winningLine, aiThinking }) {
 // Individual Square
 function Square({ value, onClick, highlight, disabled }) {
   // PUBLIC_INTERFACE
+  // Fix: Only disable if filled or disabled by parent (aiThinking), not due to highlight being false
+  const effectiveDisabled = Boolean(value) || disabled;
   return (
     <button
       className="ttt-square"
@@ -356,13 +358,13 @@ function Square({ value, onClick, highlight, disabled }) {
         fontWeight: "700",
         border: "2.5px solid #1976d2",
         borderRadius: "12px",
-        cursor: value || highlight !== undefined || disabled ? "default" : "pointer",
+        cursor: effectiveDisabled ? "default" : "pointer",
         transition: "background 0.2s, color 0.2s",
         boxShadow: highlight ? "0 2px 16px rgba(255,214,0,0.16)" : "none"
       }}
       aria-label={value ? `Filled with ${value}` : "Empty square"}
       tabIndex={0}
-      disabled={Boolean(value) || highlight !== undefined || disabled}
+      disabled={effectiveDisabled}
     >
       {value}
     </button>
