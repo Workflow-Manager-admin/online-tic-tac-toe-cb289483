@@ -1,0 +1,115 @@
+/* CSS Variables for App-wide Theme */
+:root {
+  --ttt-primary: #1976d2;
+  --ttt-accent: #ffd600;
+  --ttt-secondary: #ffffff;
+  --ttt-shadow: 0 2px 20px rgba(25,118,210,.11);
+  --ttt-square-border: #1976d2;
+  --ttt-btn-bg: #1976d2;
+  --ttt-btn-accent-bg: #ffd600;
+  --ttt-btn-color: #fff;
+  --ttt-btn-accent-color: #1976d2;
+  --ttt-btn-shadow: 0 2px 8px rgba(25,118,210,.09);
+  --ttt-btn-radius: 10px;
+}
+
+/* Tic Tac Toe Game Custom Styles */
+.tictactoe-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--ttt-secondary);
+}
+
+.ttt-board {
+  margin: 0 auto;
+}
+
+.ttt-square {
+  outline: none;
+  background: var(--ttt-secondary);
+  color: var(--ttt-primary);
+  font-size: 2.4rem;
+  font-family: inherit;
+  font-weight: 700;
+  border: 2.5px solid var(--ttt-square-border);
+  border-radius: 12px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(25,118,210,0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ttt-square:disabled {
+  cursor: not-allowed;
+  background: #f6f8fc;
+  opacity: 0.92;
+}
+
+.ttt-square[style*="background: #ffd600"] {
+  font-size: 2.4rem;
+  font-weight: 800;
+  box-shadow: 0 2px 16px rgba(255,214,0,0.16);
+}
+
+.ttt-btn {
+  background: var(--ttt-btn-bg);
+  color: var(--ttt-btn-color);
+  border: none;
+  border-radius: var(--ttt-btn-radius);
+  padding: 10px 32px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  box-shadow: var(--ttt-btn-shadow);
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 1px;
+  transition: background 0.17s, color 0.17s, box-shadow 0.2s, transform 0.11s;
+  outline: none;
+}
+.ttt-btn:active {
+  background: #1250ad;
+  transform: scale(0.97);
+}
+.ttt-btn:hover {
+  background: #155bb2;
+  color: #fff;
+}
+
+.ttt-btn.accent {
+  background: var(--ttt-btn-accent-bg);
+  color: var(--ttt-btn-accent-color);
+  margin-left: 5px;
+}
+.ttt-btn.accent:active {
+  background: #f7c800;
+}
+
+.ttt-btn.accent:hover {
+  background: #ffe25d;
+  color: #1976d2;
+}
+
+/* Responsive: adjust board/grid for mobile */
+@media (max-width: 540px) {
+  .ttt-board {
+    grid-template-columns: repeat(3, 54px) !important;
+    grid-template-rows: repeat(3, 54px) !important;
+    padding: 4px !important;
+  }
+  .ttt-square {
+    width: 54px !important;
+    height: 54px !important;
+    font-size: 2rem !important;
+    line-height: 2.4rem;
+  }
+  .ttt-btn {
+    font-size: 1rem;
+    padding: 8px 20px;
+  }
+}
